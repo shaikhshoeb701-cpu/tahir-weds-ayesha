@@ -46,6 +46,7 @@ export interface WeddingEvent {
   iconType: 'ring' | 'heart' | 'sparkles' | 'music' | 'camera' | 'palace';
   startIso?: string; // e.g. "2027-01-11T12:47:00+05:30" for Add to Calendar
   durationHours?: number;
+  allDay?: boolean; // true when only the date is fixed (time not announced yet)
 }
 
 export interface GalleryPhoto {

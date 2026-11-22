@@ -2,7 +2,8 @@ import React from 'react';
 import { initialWeddingData } from './data/defaultWeddingData';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { ScratchCard } from './components/ScratchCard';
+import { NikkahReveal } from './components/NikkahReveal';
+import { OpeningGate } from './components/OpeningGate';
 import { Countdown } from './components/Countdown';
 import { FamilyDetails } from './components/FamilyDetails';
 import { EventsSchedule } from './components/EventsSchedule';
@@ -21,16 +22,17 @@ export default function App() {
 
   return (
     <div
-      className="min-h-screen text-[#2C1810] relative"
+      className="min-h-screen text-[#1F2A24] relative"
       style={{
         backgroundColor: weddingData.theme.colors.creamBg,
         fontFamily: "'Cormorant Garamond', Georgia, serif",
       }}
     >
+      <OpeningGate weddingData={weddingData} />
       <Navbar weddingData={weddingData} onOpenCustomizer={noop} />
       <main className="relative">
         <Hero weddingData={weddingData} onOpenCustomizer={noop} onScrollToScratch={scrollToScratch} />
-        <ScratchCard weddingData={weddingData} />
+        <NikkahReveal weddingData={weddingData} />
         <Countdown weddingData={weddingData} />
         <EventsSchedule weddingData={weddingData} onOpenCustomizer={noop} />
         <FamilyDetails weddingData={weddingData} onOpenCustomizer={noop} />
