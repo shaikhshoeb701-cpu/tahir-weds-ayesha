@@ -1,22 +1,605 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tahir &amp; Dr. Ayesha - Nikkah Invitation</title>
-    <meta name="description" content="Haldi &amp; Mehndi – Saturday, 9th January 2027 · Nikkah of Tahir Shemne &amp; Dr. Ayesha Salmani – Monday, 11th January 2027, Masjid-e-Chistiya, Mumbra · Dawat-e-Walima – Tuesday, 12th January 2027, Ahmed Wedding Lawn." />
-    <meta property="og:title" content="Tahir &amp; Dr. Ayesha - Nikkah Invitation" />
-    <meta property="og:description" content="Haldi &amp; Mehndi – Saturday, 9th January 2027 · Nikkah of Tahir Shemne &amp; Dr. Ayesha Salmani – Monday, 11th January 2027, Masjid-e-Chistiya, Mumbra · Dawat-e-Walima – Tuesday, 12th January 2027, Ahmed Wedding Lawn." />
-    <meta property="og:type" content="website" />
-    <meta name="theme-color" content="#14463A" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  </head>
-  <body class="bg-[#FBF7EE] text-[#1F2A24] antialiased selection:bg-[#14463A] selection:text-[#FBF7EE]">
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tahir &amp; Dr. Ayesha — Nikkah Invitation</title>
+<meta name="description" content="You are cordially invited to the Nikkah of Tahir Shemne &amp; Dr. Ayesha Salmani — Monday, 11th January 2027, Mumbra.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tahir &amp; Dr. Ayesha — Nikkah Invitation">
+<meta property="og:description" content="Haldi &amp; Mehndi · 9 Jan · Nikkah · 11 Jan · Dawat-e-Walima · 12 Jan 2027 — Mumbra, Thane">
+<meta name="theme-color" content="#5E1A2C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+:root{
+  --wine:#5E1A2C;
+  --wine-2:#7A2A3C;
+  --wine-dark:#3E0F1C;
+  --rose:#C98B86;
+  --blush:#EBCFC6;
+  --gold:#B5873A;
+  --gold-soft:#D9B56E;
+  --ivory:#F6EEDF;
+  --paper:#FBF6EC;
+  --ink:#3A2420;
+  --muted:#7A6258;
+  --leaf:#8A8F62;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:"Cormorant Garamond",Georgia,serif;
+  color:var(--ink);
+  background:#E9DCC8;
+  font-size:20px;line-height:1.45;
+  -webkit-font-smoothing:antialiased;
+}
+body.locked{overflow:hidden;height:100svh}
+a{color:inherit;text-decoration:none}
+.cinzel{font-family:"Cinzel",Georgia,serif}
+.script{font-family:"Pinyon Script",cursive;font-weight:400}
 
+/* paper texture shared by pages */
+.paper{
+  background-color:var(--paper);
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.75), transparent 60%),
+    radial-gradient(circle at 0% 100%, rgba(201,139,134,.16), transparent 42%),
+    radial-gradient(circle at 100% 85%, rgba(181,135,58,.12), transparent 40%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .25 0 0 0 0 .15 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ================= GATE ================= */
+#gate{
+  position:fixed;inset:0;z-index:50;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  background:
+    radial-gradient(ellipse at 50% 35%, #F3E4D3 0%, #E3C9B5 55%, #C9A08E 100%);
+  transition:opacity .9s ease .9s, visibility 0s 1.8s;
+}
+#gate.open{opacity:0;visibility:hidden;pointer-events:none}
+.arch{
+  position:relative;width:min(84vw,380px);height:min(78svh,640px);
+  border-radius:999px 999px 10px 10px / 200px 200px 10px 10px;
+  background:linear-gradient(180deg,#5c4636,#3f2f24);
+  padding:12px;box-shadow:0 30px 60px rgba(62,15,28,.35), inset 0 0 0 2px rgba(217,181,110,.6);
+  perspective:1400px;
+}
+.arch-inner{position:absolute;inset:12px;border-radius:inherit;overflow:hidden;background:var(--wine-dark)}
+.door{
+  position:absolute;top:0;bottom:0;width:50%;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.35),transparent 30%),
+    linear-gradient(90deg,#EFE2CC,#F8EFDF 50%,#E9D9BF);
+  transition:transform 1.6s cubic-bezier(.6,0,.2,1);
+  box-shadow:inset 0 0 30px rgba(120,80,40,.18);
+}
+.door.l{left:0;transform-origin:left center;border-right:1px solid #cbb38f}
+.door.r{right:0;transform-origin:right center;border-left:1px solid #cbb38f}
+.door::before,.door::after{content:"";position:absolute;left:14%;right:14%;border:1.5px solid rgba(181,135,58,.55);border-radius:4px}
+.door::before{top:16%;height:40%}
+.door::after{bottom:7%;height:26%}
+.door.l::before{border-top-left-radius:140px 90px}
+.door.r::before{border-top-right-radius:140px 90px}
+#gate.open .door.l{transform:rotateY(-110deg)}
+#gate.open .door.r{transform:rotateY(110deg)}
+.knob{position:absolute;top:58%;width:9px;height:9px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#f3d99a,#9b7228)}
+.door.l .knob{right:10px}.door.r .knob{left:10px}
+.inside-glow{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 60%,#F7E7C6,#B5873A 70%,#5E1A2C);opacity:.9}
+
+.seal{
+  position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);
+  width:132px;height:132px;z-index:3;transition:transform .6s ease, opacity .6s ease;
+  filter:drop-shadow(0 10px 14px rgba(62,15,28,.45));
+}
+#gate.open .seal{transform:translate(-50%,-50%) scale(.6);opacity:0}
+.open-btn{
+  position:absolute;left:50%;bottom:9%;transform:translateX(-50%);z-index:3;
+  font-family:"Cinzel",serif;font-size:15px;letter-spacing:.28em;font-weight:600;
+  padding:15px 34px;border-radius:999px;border:1px solid rgba(217,181,110,.8);
+  background:linear-gradient(180deg,#6f2235,#4a1322);color:#F6E6C8;cursor:pointer;
+  box-shadow:0 10px 22px rgba(62,15,28,.35);white-space:nowrap;
+  animation:breathe 2.4s ease-in-out infinite;transition:opacity .4s;
+}
+#gate.open .open-btn{opacity:0}
+@keyframes breathe{0%,100%{box-shadow:0 10px 22px rgba(62,15,28,.35),0 0 0 0 rgba(217,181,110,.45)}50%{box-shadow:0 10px 22px rgba(62,15,28,.35),0 0 0 10px rgba(217,181,110,0)}}
+.vine{position:absolute;pointer-events:none;z-index:4}
+.vine.tl{top:-10px;left:-14px;width:62vw;max-width:300px}
+.vine.tr{top:-10px;right:-14px;width:62vw;max-width:300px;transform:scaleX(-1)}
+.vine.bl{bottom:-20px;left:-20px;width:42vw;max-width:200px;transform:scaleY(-1)}
+
+/* ================= LAYOUT ================= */
+main{max-width:480px;margin:0 auto;box-shadow:0 0 60px rgba(62,15,28,.18);overflow:hidden}
+.page{position:relative;padding:56px 26px;text-align:center}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* page 1 */
+#p1{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:90px;padding-bottom:70px}
+#p1 .corner{position:absolute;top:-6px;width:58%;max-width:270px;pointer-events:none}
+#p1 .corner.l{left:-10px}#p1 .corner.r{right:-10px;transform:scaleX(-1)}
+#p1 .frame{position:absolute;inset:14px;border:1px solid rgba(181,135,58,.45);border-radius:200px 200px 14px 14px/120px 120px 14px 14px;pointer-events:none}
+#p1 .frame::after{content:"";position:absolute;inset:6px;border:1px solid rgba(181,135,58,.25);border-radius:inherit}
+.bismillah{font-family:"Amiri",serif;font-size:30px;color:var(--wine);line-height:1.5}
+.blessing{font-style:italic;color:var(--muted);font-size:18px;margin-top:2px}
+.hosts{font-weight:600;font-size:21px;color:var(--ink);line-height:1.35;margin-top:22px}
+.action{font-style:italic;font-size:19px;color:var(--muted);margin-top:8px}
+.name{font-family:"Cinzel",serif;font-weight:600;color:var(--wine);font-size:44px;line-height:1.05;letter-spacing:.04em}
+.weds{font-family:"Pinyon Script",cursive;font-size:38px;color:var(--gold);line-height:1;margin:6px 0 4px}
+.parent{font-size:17px;color:var(--muted);margin-top:4px}
+.parent b{color:var(--ink);font-weight:600}
+.couple{margin-top:26px}
+.hint{margin-top:38px;font-family:"Cinzel",serif;font-size:12px;letter-spacing:.3em;color:var(--gold)}
+.hint i{display:block;font-style:normal;font-size:18px;animation:bob 1.8s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(6px)}}
+.orn{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--gold);margin:14px auto}
+.orn::before,.orn::after{content:"";height:1px;width:70px;background:linear-gradient(90deg,transparent,var(--gold))}
+.orn::after{background:linear-gradient(90deg,var(--gold),transparent)}
+
+/* page 2 */
+#p2{padding-top:60px;background-color:#F4EADA}
+.title{font-family:"Cinzel",serif;font-weight:600;font-size:25px;color:var(--wine);letter-spacing:.06em;line-height:1.25}
+.sub{font-style:italic;color:var(--muted);font-size:19px;margin-top:6px}
+.sub b{font-style:normal;font-family:"Pinyon Script",cursive;font-weight:400;color:var(--gold);font-size:28px}
+
+/* date reveal card */
+.datebox{position:relative;width:min(300px,82vw);height:210px;margin:22px auto 0;perspective:1000px;border-radius:16px}
+.date-face{position:absolute;inset:0;border-radius:16px;background:#FFFBF3;border:1px solid rgba(181,135,58,.55);
+  box-shadow:0 14px 30px rgba(94,26,44,.14);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.date-face::before{content:"";position:absolute;inset:7px;border:1px solid rgba(181,135,58,.3);border-radius:11px}
+.date-face .k{font-family:"Cinzel",serif;font-size:13px;letter-spacing:.3em;color:var(--gold)}
+.date-face .d{font-family:"Cinzel",serif;font-size:30px;font-weight:600;color:var(--wine);margin-top:4px}
+.date-face .w{font-weight:600;font-size:19px;margin-top:2px}
+.date-face .h{font-style:italic;color:var(--muted);font-size:16px}
+.mini-door{position:absolute;top:0;bottom:0;width:50%;z-index:2;
+  background:linear-gradient(90deg,#6c2033,#5a1729 60%,#4b1222);
+  transition:transform 1.4s cubic-bezier(.6,0,.2,1), opacity 1.4s ease}
+.mini-door.l{left:0;border-radius:16px 0 0 16px;transform-origin:left center;border-right:1px solid var(--gold-soft)}
+.mini-door.r{right:0;border-radius:0 16px 16px 0;transform-origin:right center;border-left:1px solid var(--gold-soft)}
+.mini-door::before{content:"";position:absolute;inset:12px;border:1px solid rgba(217,181,110,.55);border-radius:8px}
+.datebox.open .mini-door.l{transform:rotateY(-105deg);opacity:0}
+.datebox.open .mini-door.r{transform:rotateY(105deg);opacity:0}
+.mini-seal{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3;width:84px;height:84px;cursor:pointer;
+  border:0;background:none;filter:drop-shadow(0 6px 10px rgba(0,0,0,.35));animation:pulse 2.2s ease-in-out infinite}
+.datebox.open .mini-seal{opacity:0;pointer-events:none;transition:opacity .4s}
+@keyframes pulse{50%{transform:translate(-50%,-50%) scale(1.07)}}
+.cal-btn{margin-top:18px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:7px;font-family:"Cinzel",serif;font-weight:600;font-size:12.5px;letter-spacing:.12em;
+  padding:11px 18px;border-radius:999px;border:1px solid var(--wine);color:var(--wine);background:transparent;cursor:pointer;transition:all .25s}
+.btn.solid{background:var(--wine);color:#F8EAD0;border-color:var(--wine)}
+.btn:active{transform:scale(.96)}
+.btn svg{width:15px;height:15px}
+
+/* events */
+.events{margin-top:54px}
+.cards{display:grid;gap:18px;margin-top:22px}
+.card{position:relative;background:#FFFBF3;border:1px solid rgba(181,135,58,.45);border-radius:120px 120px 18px 18px/60px 60px 18px 18px;
+  padding:30px 20px 22px;box-shadow:0 12px 26px rgba(94,26,44,.09)}
+.card::before{content:"";position:absolute;inset:6px;border:1px solid rgba(181,135,58,.22);border-radius:114px 114px 13px 13px/56px 56px 13px 13px;pointer-events:none}
+.card.main{background:linear-gradient(180deg,#6a1f32,#4e1424);color:#F6E8CC;border-color:var(--gold-soft)}
+.card.main::before{border-color:rgba(217,181,110,.45)}
+.card .ic{width:52px;height:52px;margin:0 auto 6px;color:var(--gold)}
+.card h3{font-family:"Cinzel",serif;font-weight:600;font-size:23px;color:var(--wine);letter-spacing:.05em;line-height:1.2}
+.card.main h3{color:#FBEFD6}
+.card .tag{font-family:"Pinyon Script",cursive;font-size:25px;color:var(--gold);line-height:1.2}
+.card.main .tag{color:var(--gold-soft)}
+.card .when{font-weight:700;font-size:19px;margin-top:8px}
+.card .time{font-size:18px}
+.card .where{font-size:17px;color:var(--muted);margin-top:6px;line-height:1.35}
+.card.main .where{color:#E8D3B5}
+.card .row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px;position:relative;z-index:1}
+.card.main .btn{border-color:var(--gold-soft);color:#FBEFD6}
+.card.main .btn.solid{background:var(--gold-soft);color:var(--wine-dark)}
+.tba{display:inline-block;margin-top:8px;font-size:15px;font-style:italic;color:var(--wine-2);background:rgba(201,139,134,.18);padding:3px 12px;border-radius:999px}
+
+/* countdown */
+.count{margin-top:54px}
+.timer{display:flex;justify-content:center;gap:9px;margin-top:16px}
+.unit{width:68px;padding:12px 0 8px;border-radius:14px;background:#FFFBF3;border:1px solid rgba(181,135,58,.45)}
+.unit b{display:block;font-family:"Cinzel",serif;font-size:28px;font-weight:600;color:var(--wine);line-height:1}
+.unit span{font-family:"Cinzel",serif;font-size:10px;letter-spacing:.18em;color:var(--gold)}
+
+/* closing */
+#p3{background:linear-gradient(180deg,#5E1A2C,#3E0F1C);color:#F3E3C6;padding:52px 26px 46px}
+#p3 .dua{font-style:italic;font-size:22px;line-height:1.4;color:#FBEFD6}
+#p3 .arabic{font-family:"Amiri",serif;font-size:24px;color:var(--gold-soft);margin-bottom:8px}
+#p3 .k{font-family:"Cinzel",serif;font-size:12px;letter-spacing:.28em;color:var(--gold-soft);margin-top:28px}
+#p3 .fam{font-weight:600;font-size:21px;margin-top:4px;color:#FBEFD6}
+#p3 .addr{font-size:17px;color:#D9C4A4;margin-top:6px}
+#p3 .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+#p3 .btn{border-color:var(--gold-soft);color:#FBEFD6}
+#p3 .sign{font-family:"Pinyon Script",cursive;font-size:40px;color:var(--gold-soft);margin-top:26px}
+
+/* music */
+#music{position:fixed;top:14px;right:14px;z-index:40;width:44px;height:44px;border-radius:50%;border:1px solid rgba(181,135,58,.7);
+  background:rgba(251,246,236,.92);color:var(--wine);display:flex;align-items:center;justify-content:center;cursor:pointer;
+  box-shadow:0 6px 16px rgba(62,15,28,.18);opacity:0;transition:opacity .6s}
+#music.show{opacity:1}
+#music svg{width:20px;height:20px}
+#music .off{display:none}
+#music.muted .on{display:none}#music.muted .off{display:block}
+#music:not(.muted)::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:1px solid rgba(181,135,58,.5);animation:ring 2s ease-out infinite}
+@keyframes ring{from{transform:scale(.85);opacity:1}to{transform:scale(1.3);opacity:0}}
+
+#petals{position:fixed;inset:0;pointer-events:none;z-index:45}
+
+@media (min-width:520px){ body{padding:0} main{margin:24px auto;border-radius:24px} }
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body class="locked">
+
+<!-- reusable artwork -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <radialGradient id="waxg" cx="38%" cy="32%" r="75%">
+      <stop offset="0" stop-color="#9a3a4c"/><stop offset=".55" stop-color="#6a1d2f"/><stop offset="1" stop-color="#3f0f1b"/>
+    </radialGradient>
+    <linearGradient id="goldg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F3DA9C"/><stop offset=".5" stop-color="#C99A45"/><stop offset="1" stop-color="#E9C77E"/>
+    </linearGradient>
+    <symbol id="wax" viewBox="0 0 140 140">
+      <path fill="url(#waxg)" d="M70 6c7 0 9 5 15 6s11-3 16 1 3 10 7 14 10 3 12 9-3 10-2 16 6 9 5 15-7 8-9 13 1 11-3 15-10 2-15 5-6 10-12 11-10-4-16-4-10 6-16 4-6-9-11-12-12-2-15-7 1-11-2-16-9-7-9-13 6-8 6-14-5-11-2-16 9-6 12-11 2-12 7-15 11 1 16-1 8-8 14-8z"/>
+      <circle cx="70" cy="70" r="44" fill="none" stroke="url(#goldg)" stroke-width="2"/>
+      <circle cx="70" cy="70" r="38" fill="none" stroke="url(#goldg)" stroke-width=".8" stroke-dasharray="2 3"/>
+      <g fill="none" stroke="url(#goldg)" stroke-width="1.2" stroke-linecap="round">
+        <path d="M44 98c8 6 18 9 26 9s18-3 26-9"/>
+        <path d="M50 101c-3-5-2-9 2-11M58 105c-2-5 0-9 4-10M90 101c3-5 2-9-2-11M82 105c2-5 0-9-4-10"/>
+      </g>
+      <text x="70" y="82" text-anchor="middle" font-family="Cinzel, serif" font-weight="600" font-size="34" fill="url(#goldg)">T&amp;A</text>
+      <path d="M67 30a8 8 0 1 0 6 14a6.5 6.5 0 1 1 -6-14z" fill="url(#goldg)"/>
+    </symbol>
+    <!-- blossom -->
+    <symbol id="bloom" viewBox="-20 -20 40 40">
+      <g fill="#E7BDB4"><ellipse rx="7" ry="11" transform="rotate(0) translate(0 -8)"/><ellipse rx="7" ry="11" transform="rotate(72) translate(0 -8)"/><ellipse rx="7" ry="11" transform="rotate(144) translate(0 -8)"/><ellipse rx="7" ry="11" transform="rotate(216) translate(0 -8)"/><ellipse rx="7" ry="11" transform="rotate(288) translate(0 -8)"/></g>
+      <g fill="#D19C95"><ellipse rx="5" ry="7" transform="rotate(36) translate(0 -5)"/><ellipse rx="5" ry="7" transform="rotate(108) translate(0 -5)"/><ellipse rx="5" ry="7" transform="rotate(180) translate(0 -5)"/><ellipse rx="5" ry="7" transform="rotate(252) translate(0 -5)"/><ellipse rx="5" ry="7" transform="rotate(324) translate(0 -5)"/></g>
+      <circle r="4" fill="#B5873A"/><circle r="2" fill="#F3DA9C"/>
+    </symbol>
+    <symbol id="bud" viewBox="-10 -10 20 20"><path d="M0 -8c5 3 6 10 0 13c-6-3-5-10 0-13z" fill="#C98B86"/><path d="M0 -8c2 4 2 9 0 13" stroke="#B0716C" fill="none"/></symbol>
+    <symbol id="leaf" viewBox="-12 -6 24 12"><path d="M-11 0c6-7 16-7 22 0c-6 7-16 7-22 0z" fill="#9AA071"/><path d="M-10 0h20" stroke="#7d8357" stroke-width=".8"/></symbol>
+    <!-- garland used in corners -->
+    <symbol id="garland" viewBox="0 0 300 220">
+      <path d="M-5 10C60 40 90 70 120 120S180 190 230 210" fill="none" stroke="#8a7a52" stroke-width="2"/>
+      <path d="M40 22C70 60 70 100 60 140" fill="none" stroke="#8a7a52" stroke-width="1.4"/>
+      <path d="M100 70c30 10 60 10 95 0" fill="none" stroke="#8a7a52" stroke-width="1.4"/>
+      <use href="#leaf" x="20" y="10" width="30" height="15" transform="rotate(25 35 17)"/>
+      <use href="#leaf" x="70" y="40" width="30" height="15" transform="rotate(-20 85 47)"/>
+      <use href="#leaf" x="95" y="95" width="28" height="14" transform="rotate(50 109 102)"/>
+      <use href="#leaf" x="140" y="150" width="28" height="14" transform="rotate(30 154 157)"/>
+      <use href="#leaf" x="50" y="100" width="26" height="13" transform="rotate(80 63 106)"/>
+      <use href="#leaf" x="150" y="62" width="26" height="13" transform="rotate(-10 163 68)"/>
+      <use href="#leaf" x="185" y="185" width="26" height="13" transform="rotate(20 198 191)"/>
+      <use href="#bloom" x="-6" y="-10" width="52" height="52"/>
+      <use href="#bloom" x="80" y="60" width="44" height="44"/>
+      <use href="#bloom" x="40" y="118" width="34" height="34"/>
+      <use href="#bloom" x="150" y="110" width="40" height="40"/>
+      <use href="#bloom" x="185" y="50" width="30" height="30"/>
+      <use href="#bloom" x="205" y="190" width="30" height="30"/>
+      <use href="#bud" x="56" y="36" width="16" height="16"/>
+      <use href="#bud" x="124" y="96" width="14" height="14"/>
+      <use href="#bud" x="62" y="152" width="14" height="14"/>
+      <use href="#bud" x="196" y="66" width="12" height="12"/>
+      <use href="#bud" x="232" y="196" width="12" height="12"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ================= GATE ================= -->
+<div id="gate" role="dialog" aria-label="Wedding invitation cover">
+  <svg class="vine tl" viewBox="0 0 300 220"><use href="#garland"/></svg>
+  <svg class="vine tr" viewBox="0 0 300 220"><use href="#garland"/></svg>
+  <svg class="vine bl" viewBox="0 0 300 220"><use href="#garland"/></svg>
+  <div class="arch">
+    <div class="arch-inner">
+      <div class="inside-glow"></div>
+      <div class="door l"><span class="knob"></span></div>
+      <div class="door r"><span class="knob"></span></div>
+    </div>
+    <svg class="seal" viewBox="0 0 140 140"><use href="#wax"/></svg>
+    <button class="open-btn" id="openBtn" type="button">TAP TO OPEN</button>
+  </div>
+</div>
+
+<button id="music" class="muted" type="button" aria-label="Play or pause music">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 10v4h4l5 4V6l-5 4H4z" fill="currentColor"/>
+    <path class="on" d="M16 9a5 5 0 0 1 0 6M18.5 6.5a9 9 0 0 1 0 11"/>
+    <path class="off" d="m16 9 5 6m0-6-5 6"/>
+  </svg>
+</button>
+<canvas id="petals"></canvas>
+
+<main>
+  <!-- ================= PAGE 1 ================= -->
+  <section id="p1" class="page paper">
+    <svg class="corner l" viewBox="0 0 300 220" aria-hidden="true"><use href="#garland"/></svg>
+    <svg class="corner r" viewBox="0 0 300 220" aria-hidden="true"><use href="#garland"/></svg>
+    <div class="frame"></div>
+
+    <div class="reveal">
+      <div class="bismillah">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+      <div class="blessing">With the blessings of Allah Almighty</div>
+    </div>
+
+    <div class="reveal">
+      <p class="hosts">Mrs. Haseena &amp; Mr. Ashraf Ahmed Shemne</p>
+      <p class="action">request the honour of your presence at the Nikkah of their beloved son</p>
+    </div>
+
+    <div class="couple reveal">
+      <h1 class="name">Tahir</h1>
+      <div class="weds">weds</div>
+      <h1 class="name">Dr. Ayesha</h1>
+      <p class="parent"><b>D/o</b> Mrs. Shahjahan &amp; Mr. Noormohd Salmani</p>
+    </div>
+
+    <div class="hint">SCROLL<i>&#8595;</i></div>
+  </section>
+
+  <!-- ================= PAGE 2 ================= -->
+  <section id="p2" class="page">
+    <div class="reveal">
+      <h2 class="title">Save the Date</h2>
+      <p class="sub">Tap the <b>seal</b> to reveal our Nikkah date</p>
+    </div>
+
+    <div class="datebox reveal" id="datebox">
+      <div class="date-face">
+        <span class="k">INSHALLAH</span>
+        <span class="d">11 · 01 · 2027</span>
+        <span class="w">Monday, after Zohar · 12:47 pm</span>
+        <span class="h">22 Rajab 1448 AH</span>
+      </div>
+      <div class="mini-door l"></div>
+      <div class="mini-door r"></div>
+      <button class="mini-seal" id="seal" type="button" aria-label="Tap to reveal the Nikkah date">
+        <svg viewBox="0 0 140 140" width="84" height="84"><use href="#wax"/></svg>
+      </button>
+    </div>
+    <div class="cal-btn reveal">
+      <a class="btn solid" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Nikkah%20%E2%80%93%20Tahir%20%26%20Dr.%20Ayesha&dates=20270111T071700Z/20270111T091700Z&location=Masjid-e-Chistiya%2C%20near%20Bilal%20Hospital%2C%20Shimla%20Park%2C%20Kausa%2C%20Mumbra%2C%20Thane%20400612&details=Nikkah%20after%20Namaz-e-Zohar%20(Dhuhr)%2C%2012%3A47%20pm">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M12 13v5M9.5 15.5h5"/></svg>ADD TO CALENDAR</a>
+    </div>
+
+    <!-- events -->
+    <div class="events">
+      <div class="reveal">
+        <h2 class="title">Wedding Celebrations</h2>
+        <p class="sub">Join us for these blessed moments</p>
+      </div>
+
+      <div class="cards">
+        <article class="card reveal">
+          <svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M24 54c-5 0-9-5-9-11V29c0-2 2-4 4-4s3 2 3 4v6"/><path d="M22 29V19c0-2 2-4 4-4s3 2 3 4v14"/><path d="M29 19v-5c0-2 2-4 4-4s3 2 3 4v19"/><path d="M36 16c0-2 2-4 4-4s3 2 3 4v19"/><path d="M43 29c3 0 6 3 6 7v6c0 7-6 12-13 12H24"/>
+            <circle cx="31" cy="40" r="3"/><path d="M26 45q5 3 10 0M27 34q4-2 8 0"/>
+          </svg>
+          <h3>Haldi &amp; Mehndi</h3>
+          <div class="tag">a golden evening</div>
+          <p class="when">Saturday, 9th January 2027</p>
+          <span class="tba">Time &amp; venue — coming soon</span>
+          <div class="row">
+            <a class="btn" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Haldi%20%26%20Mehndi%20%E2%80%93%20Tahir%20%26%20Dr.%20Ayesha&dates=20270109/20270110">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>CALENDAR</a>
+          </div>
+        </article>
+
+        <article class="card main reveal">
+          <svg class="ic" viewBox="0 0 64 64" fill="none" stroke="#D9B56E" stroke-width="1.5" stroke-linecap="round">
+            <path d="M32 6a10 10 0 1 0 8 16a8 8 0 1 1-8-16z" fill="#D9B56E" stroke="none"/>
+            <circle cx="25" cy="42" r="11"/><circle cx="39" cy="42" r="11"/><path d="M22 30l3-4 3 4M36 30l3-4 3 4"/>
+          </svg>
+          <h3>Nikkah</h3>
+          <div class="tag">the blessed union</div>
+          <p class="when">Monday, 11th January 2027</p>
+          <p class="time">After Namaz-e-Zohar · 12:47 pm</p>
+          <p class="where">Masjid-e-Chistiya, near Bilal Hospital,<br>Shimla Park, Kausa, Mumbra</p>
+          <div class="row">
+            <a class="btn solid" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Masjid-e-Chistiya%2C%20near%20Bilal%20Hospital%2C%20Shimla%20Park%2C%20Kausa%2C%20Mumbra%2C%20Thane">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>MAP</a>
+            <a class="btn" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Nikkah%20%E2%80%93%20Tahir%20%26%20Dr.%20Ayesha&dates=20270111T071700Z/20270111T091700Z&location=Masjid-e-Chistiya%2C%20near%20Bilal%20Hospital%2C%20Shimla%20Park%2C%20Kausa%2C%20Mumbra%2C%20Thane%20400612">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>CALENDAR</a>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M32 6v6"/><circle cx="32" cy="14" r="2"/><path d="M22 26q10-14 20 0z"/><path d="M20 26h24"/><path d="M22 26v18q10 6 20 0V26"/><path d="M27 26v20M37 26v20"/><path d="M20 44h24l-4 6H24z"/><path d="M32 50v6"/>
+          </svg>
+          <h3>Dawat-e-Walima</h3>
+          <div class="tag">reception &amp; dinner</div>
+          <p class="when">Tuesday, 12th January 2027</p>
+          <p class="time">7:30 pm onwards</p>
+          <p class="where">Ahmed Wedding Lawn, Dosti Planet,<br>N Road, Shibli Nagar, Kausa, Mumbra</p>
+          <div class="row">
+            <a class="btn solid" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Ahmed%20Wedding%20Lawn%2C%20Dosti%20Planet%2C%20Shibli%20Nagar%2C%20Kausa%2C%20Mumbra%2C%20Thane">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>MAP</a>
+            <a class="btn" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Dawat-e-Walima%20%E2%80%93%20Tahir%20%26%20Dr.%20Ayesha&dates=20270112T140000Z/20270112T173000Z&location=Ahmed%20Wedding%20Lawn%2C%20Dosti%20Planet%2C%20N%20Road%2C%20Shibli%20Nagar%2C%20Kausa%2C%20Mumbra%2C%20Thane%20421204">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>CALENDAR</a>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- countdown -->
+    <div class="count reveal">
+      <h2 class="title">Until we say<br>“Qubool Hai”</h2>
+      <div class="timer" id="timer">
+        <div class="unit"><b id="cd-d">--</b><span>DAYS</span></div>
+        <div class="unit"><b id="cd-h">--</b><span>HRS</span></div>
+        <div class="unit"><b id="cd-m">--</b><span>MIN</span></div>
+        <div class="unit"><b id="cd-s">--</b><span>SEC</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CLOSING ================= -->
+  <section id="p3" class="page">
+    <div class="reveal">
+      <div class="arabic">وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</div>
+      <p class="dua">May Allah accept our efforts,<br>and unite us all in goodness.</p>
+    </div>
+    <div class="reveal">
+      <p class="k">WITH BEST COMPLIMENTS FROM</p>
+      <p class="fam">Shemne, Thakur &amp; Dasurkar Family,<br>Relatives &amp; Friends</p>
+      <p class="addr">303/B, Imam Apt, Sharifa Road, Mumbra, Thane</p>
+      <div class="row">
+        <a class="btn" href="tel:+919664949610">📞 96649 49610</a>
+        <a class="btn" href="tel:+918655580985">📞 86555 80985</a>
+      </div>
+    </div>
+    <div class="sign reveal">Tahir &amp; Ayesha</div>
+  </section>
+</main>
+
+<script>
+(function(){
+  /* ---------------- reveal on scroll ---------------- */
+  var io = 'IntersectionObserver' in window ? new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.12}) : null;
+  document.querySelectorAll('.reveal').forEach(function(el){ io ? io.observe(el) : el.classList.add('in'); });
+
+  /* ---------------- petals ---------------- */
+  var cv = document.getElementById('petals'), cx = cv.getContext('2d'), petals = [], raf = null;
+  function size(){ cv.width = innerWidth * devicePixelRatio; cv.height = innerHeight * devicePixelRatio; cx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0); }
+  size(); addEventListener('resize', size);
+  var cols = ['#E7BDB4','#D19C95','#F1D9C7','#C98B86','#E9C77E'];
+  function burst(n){
+    for(var i=0;i<n;i++) petals.push({x:Math.random()*innerWidth, y:-20-Math.random()*innerHeight*.6, r:5+Math.random()*6,
+      vy:.8+Math.random()*1.4, vx:-.5+Math.random(), a:Math.random()*6, va:-.04+Math.random()*.08, c:cols[i%cols.length], sw:Math.random()*6});
+    if(!raf) loop();
+  }
+  function loop(){
+    cx.clearRect(0,0,innerWidth,innerHeight);
+    petals = petals.filter(function(p){ return p.y < innerHeight + 30; });
+    petals.forEach(function(p){
+      p.y += p.vy; p.sw += .03; p.x += p.vx + Math.sin(p.sw)*.6; p.a += p.va;
+      cx.save(); cx.translate(p.x,p.y); cx.rotate(p.a); cx.fillStyle = p.c; cx.globalAlpha = .85;
+      cx.beginPath(); cx.ellipse(0,0,p.r,p.r*.6,0,0,Math.PI*2); cx.fill(); cx.restore();
+    });
+    raf = petals.length ? requestAnimationFrame(loop) : null;
+    if(!raf) cx.clearRect(0,0,innerWidth,innerHeight);
+  }
+
+  /* ---------------- music: original Arabic-style melody (oud + daf), synthesised ---------------- */
+  var A = null;
+  function Audio(){
+    var AC = window.AudioContext || window.webkitAudioContext; if(!AC) return null;
+    var ctx = new AC(), master = ctx.createGain(), wet = ctx.createGain(), conv = ctx.createConvolver();
+    master.gain.value = .0001; master.connect(ctx.destination);
+    var len = ctx.sampleRate*2.4, ir = ctx.createBuffer(2,len,ctx.sampleRate);
+    for(var ch=0;ch<2;ch++){ var d = ir.getChannelData(ch); for(var i=0;i<len;i++) d[i] = (Math.random()*2-1)*Math.pow(1-i/len,2.6); }
+    conv.buffer = ir; wet.gain.value = .3; wet.connect(conv); conv.connect(master);
+    function out(n){ n.connect(master); n.connect(wet); }
+    function pluck(f,t,vel,length,bright){
+      vel=vel||.2; length=length||1.3; bright=bright||2400;
+      var g = ctx.createGain(), lp = ctx.createBiquadFilter(); lp.type='lowpass'; lp.Q.value=2;
+      lp.frequency.setValueAtTime(bright,t); lp.frequency.exponentialRampToValueAtTime(480,t+length*.6);
+      g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime(vel,t+.006);
+      g.gain.exponentialRampToValueAtTime(vel*.35,t+.18); g.gain.exponentialRampToValueAtTime(.0001,t+length);
+      [['sawtooth',0,.5],['triangle',4,.8],['sawtooth',-5,.3]].forEach(function(o){
+        var os = ctx.createOscillator(), og = ctx.createGain(); os.type=o[0]; os.frequency.value=f; os.detune.value=o[1]; og.gain.value=o[2];
+        os.connect(og); og.connect(lp); os.start(t); os.stop(t+length+.05);
+      });
+      lp.connect(g); out(g);
+    }
+    function daf(kind,t,vel){
+      vel=vel||1;
+      if(kind==='dum'){ var o=ctx.createOscillator(), g=ctx.createGain(); o.frequency.setValueAtTime(95,t); o.frequency.exponentialRampToValueAtTime(52,t+.25);
+        g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime(.3*vel,t+.01); g.gain.exponentialRampToValueAtTime(.0001,t+.45); o.connect(g); out(g); o.start(t); o.stop(t+.5); }
+      var dur = kind==='dum'?.12:.22, b = ctx.createBuffer(1,Math.floor(ctx.sampleRate*dur),ctx.sampleRate), dd=b.getChannelData(0);
+      for(var i=0;i<dd.length;i++) dd[i]=Math.random()*2-1;
+      var s=ctx.createBufferSource(); s.buffer=b; var bp=ctx.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value= kind==='dum'?900:5200; bp.Q.value= kind==='dum'?1:2.5;
+      var gg=ctx.createGain(); gg.gain.setValueAtTime(.0001,t); gg.gain.exponentialRampToValueAtTime((kind==='dum'?.05:.065)*vel,t+.004); gg.gain.exponentialRampToValueAtTime(.0001,t+dur);
+      s.connect(bp); bp.connect(gg); out(gg); s.start(t);
+    }
+    var N={D4:293.66,Eb4:311.13,Fs4:369.99,G4:392,A4:440,Bb4:466.16,C5:523.25,D5:587.33};
+    var M=[[N.D4,1],[N.Eb4,.5],[N.Fs4,.5],[N.G4,1],[N.A4,1],[N.G4,.5],[N.Fs4,.5],[N.Eb4,1],[N.D4,2],
+           [N.A4,1],[N.Bb4,.5],[N.A4,.5],[N.G4,1],[N.Fs4,1],[N.G4,.5],[N.A4,.5],[N.Fs4,.5],[N.Eb4,.5],[N.D4,2],
+           [N.D5,1],[N.C5,.5],[N.Bb4,.5],[N.A4,1],[N.G4,1],[N.Fs4,.5],[N.G4,.5],[N.A4,1],[0,2],
+           [N.G4,.5],[N.Fs4,.5],[N.Eb4,.5],[N.Fs4,.5],[N.G4,1],[N.A4,1],[N.Fs4,1],[N.Eb4,1],[N.D4,2]];
+    var DAF=[[0,'dum'],[1.5,'tek'],[2,'dum'],[3,'tek'],[3.5,'tek']], BEAT=60/80;
+    var playing=false, timer=null, idx=0, next=0, bar=0, start=0, drones=[];
+    function sched(){
+      var h = ctx.currentTime + .4;
+      while(next < h){ var f=M[idx][0], b=M[idx][1], L=b*BEAT;
+        if(f){ if(b>=2){ var st=Math.floor(L/.16); for(var i=0;i<st;i++) pluck(f,next+i*.16,.15*(1-i/(st+2)),.5); } else pluck(f,next,.2,Math.max(.9,L*1.6)); }
+        next += L; idx = (idx+1)%M.length; }
+      while(start + bar*4*BEAT < h){ var bt=start+bar*4*BEAT; DAF.forEach(function(x){ daf(x[1], bt+x[0]*BEAT, x[1]==='dum'?1:.8); }); bar++; }
+    }
+    return {
+      start:function(){ if(ctx.state==='suspended') ctx.resume(); if(playing) return; playing=true; var n=ctx.currentTime;
+        master.gain.cancelScheduledValues(n); master.gain.setValueAtTime(.0001,n); master.gain.exponentialRampToValueAtTime(.7,n+2.5);
+        start=next=n+.15; idx=0; bar=0;
+        [73.42,110,146.83].forEach(function(f,i){ var o=ctx.createOscillator(), g=ctx.createGain(); o.type=i===2?'triangle':'sine'; o.frequency.value=f;
+          g.gain.setValueAtTime(.0001,n); g.gain.linearRampToValueAtTime(i===2?.012:.028,n+3); o.connect(g); out(g); o.start(); drones.push([o,g]); });
+        sched(); timer=setInterval(sched,100); },
+      stop:function(){ playing=false; clearInterval(timer); var t=ctx.currentTime; master.gain.cancelScheduledValues(t);
+        master.gain.setValueAtTime(Math.max(master.gain.value,.0001),t); master.gain.exponentialRampToValueAtTime(.0001,t+.8);
+        drones.forEach(function(d){ d[0].stop(t+1); }); drones=[]; },
+      chime:function(){ if(ctx.state==='suspended') ctx.resume(); if(!playing) master.gain.setValueAtTime(.6,ctx.currentTime);
+        var t=ctx.currentTime+.02; [N.D4,N.Eb4,N.Fs4,N.G4,N.A4,N.Bb4,N.C5,N.D5,N.D5*2].forEach(function(f,i){ pluck(f,t+i*.07,.13,1.6,4200); });
+        daf('dum',t); daf('tek',t+.35,.9); daf('dum',t+.6); },
+      isOn:function(){ return playing; }
+    };
+  }
+  /* Song file: put the mp3 in the repo at public/Audio/Mp3Jan.mp3 (same file name as Hafeez's site).
+     If the file is not there, the built-in oud & daf melody plays instead. */
+  var SONG = 'Audio/Mp3Jan.mp3';
+  var song = document.createElement('audio'); song.loop = true; song.preload = 'auto';
+  var songOk = true; song.addEventListener('error', function(){ songOk = false; if(wantOn) fallback(); });
+  song.src = SONG;
+  var wantOn = false, usingSynth = false;
+  function fallback(){ try { A = A || Audio(); if(A){ usingSynth = true; A.start(); } } catch(e){} }
+  var musicBtn = document.getElementById('music');
+  function setMusic(on){
+    wantOn = on; musicBtn.classList.toggle('muted', !on);
+    if(on){
+      if(songOk){ var p = song.play(); if(p && p.catch) p.catch(function(){ songOk = false; fallback(); }); }
+      else fallback();
+    } else { song.pause(); if(A && A.isOn()) A.stop(); }
+  }
+  musicBtn.addEventListener('click', function(){ setMusic(!wantOn); });
+
+  /* ---------------- gate ---------------- */
+  var gate = document.getElementById('gate');
+  function openGate(){
+    if(gate.classList.contains('open')) return;
+    gate.classList.add('open');
+    setMusic(true);
+    musicBtn.classList.add('show');
+    burst(40);
+    setTimeout(function(){ document.body.classList.remove('locked'); }, 1200);
+  }
+  gate.addEventListener('click', openGate);
+
+  /* ---------------- date reveal ---------------- */
+  var box = document.getElementById('datebox');
+  document.getElementById('seal').addEventListener('click', function(){
+    if(box.classList.contains('open')) return;
+    box.classList.add('open');
+    if(!songOk || usingSynth){ try { (A = A || Audio()) && A.chime(); } catch(e){} }
+    setTimeout(function(){ burst(50); }, 500);
+  });
+
+  /* ---------------- countdown (11 Jan 2027, 12:47 pm IST) ---------------- */
+  var target = Date.UTC(2027,0,11,7,17,0);
+  function pad(n){ return (n<10?'0':'') + n; }
+  (function tick(){
+    var s = Math.floor((target - Date.now())/1000);
+    if(s <= 0){ document.getElementById('timer').innerHTML = '<p class="sub">Alhamdulillah — Qubool Hai!</p>'; return; }
+    document.getElementById('cd-d').textContent = Math.floor(s/86400);
+    document.getElementById('cd-h').textContent = pad(Math.floor(s%86400/3600));
+    document.getElementById('cd-m').textContent = pad(Math.floor(s%3600/60));
+    document.getElementById('cd-s').textContent = pad(s%60);
+    setTimeout(tick, 1000);
+  })();
+})();
+</script>
+</body>
+</html>
