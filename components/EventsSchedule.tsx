@@ -1,164 +1,124 @@
 import React from 'react';
-import { Calendar, Clock, MapPin, Sparkles, Shirt, Plus, Edit3 } from 'lucide-react';
+import { CalendarDays, CalendarPlus, Clock, MapPin, Navigation, Shirt } from 'lucide-react';
 import { WeddingData, WeddingEvent } from '../types';
 import { createEventCalendarUrl } from '../utils/calendar';
+import { CrescentStar, OrnateDivider, Star8 } from './IslamicDecor';
 
 interface EventsScheduleProps {
   weddingData: WeddingData;
   onOpenCustomizer: (initialTab?: string) => void;
 }
 
-export const EventsSchedule: React.FC<EventsScheduleProps> = ({ weddingData, onOpenCustomizer }) => {
+const ARABIC: Record<string, string> = {
+  nikkah: 'نِكَاح',
+  walima: 'وَلِيمَة',
+};
+
+export const EventsSchedule: React.FC<EventsScheduleProps> = ({ weddingData }) => {
   const { events, theme } = weddingData;
   const { colors } = theme;
 
   return (
-    <section id="events" className="py-20 px-4 relative">
+    <section id="events" className="py-20 px-4 relative page-pattern">
       <div className="max-w-6xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-14">
           <div className="flex items-center justify-center gap-2 mb-2">
-            <Calendar className="w-4 h-4 text-[#D4AF37]" />
-            <span className="text-xs uppercase tracking-widest font-semibold" style={{ color: colors.primaryMaroon }}>
-              Rituals &amp; Itinerary
+            <CrescentStar size={18} color={colors.accentGold} />
+            <span className="text-xs uppercase tracking-[0.3em] font-semibold" style={{ color: colors.primaryMaroon }}>
+              Wedding Functions
             </span>
-            <Calendar className="w-4 h-4 text-[#D4AF37]" />
+            <CrescentStar size={18} color={colors.accentGold} />
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-medium text-stone-900 mb-3">
-            Wedding Events &amp; Celebrations
+          <h2 className="text-5xl sm:text-6xl mb-2" style={{ fontFamily: "'Great Vibes', cursive", color: colors.primaryMaroon }}>
+            Celebrations
           </h2>
-          <p className="text-sm sm:text-base text-stone-600 font-light">
-            Each ceremony is infused with cultural grace, spiritual blessings, and joyous togetherness.
+          <OrnateDivider color={colors.accentGold} />
+          <p className="text-sm sm:text-base text-stone-600 italic mt-3">
+            Join us, Inshallah, for these blessed occasions and keep us in your duas.
           </p>
-          <div className="mt-3 flex items-center justify-center gap-4">
-          </div>
         </div>
 
-        {/* Events Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch max-w-sm md:max-w-none mx-auto">
           {events.map((event: WeddingEvent, idx: number) => {
-            const isMainEvent = event.badge?.toLowerCase().includes('main') || event.title.toLowerCase().includes('nikah');
+            const isMain = /nikk?ah/i.test(event.title);
+            const key = /nikk?ah/i.test(event.title) ? 'nikkah' : /walima/i.test(event.title) ? 'walima' : /haldi|mehndi/i.test(event.title) ? 'haldi' : '';
+            const hasAddress = !!event.venueAddress;
 
             return (
               <div
                 key={event.id || idx}
-                className={`rounded-3xl border p-6 sm:p-8 flex flex-col justify-between shadow-xs transition-all duration-300 hover:shadow-md relative overflow-hidden bg-white ${
-                  isMainEvent ? 'ring-2 ring-[#D4AF37]/60' : ''
-                }`}
-                style={{ borderColor: isMainEvent ? colors.accentGold : `${colors.accentGold}40` }}
+                className="arch-card relative bg-white border px-6 pt-16 pb-7 flex flex-col text-center shadow-sm transition-shadow hover:shadow-lg"
+                style={{
+                  borderColor: isMain ? colors.accentGold : `${colors.accentGold}66`,
+                  boxShadow: isMain ? `0 0 0 3px ${colors.accentGold}33, 0 14px 40px rgba(20,70,58,.12)` : undefined,
+                }}
               >
-                {/* Event Badge */}
-                <div className="flex items-center justify-between mb-4">
-                  {event.badge && (
-                    <span
-                      className="px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider text-white shadow-xs"
-                      style={{ backgroundColor: isMainEvent ? colors.primaryMaroon : '#4A3528' }}
-                    >
-                      {event.badge}
-                    </span>
-                  )}
-                  <span className="text-xs font-serif italic text-amber-700 font-medium ml-auto">
-                    Event 0{idx + 1}
+                <div className="absolute inset-[7px] arch-card border pointer-events-none" style={{ borderColor: `${colors.accentGold}40` }} />
+
+                <Star8 size={26} color={colors.accentGold} className="mx-auto" />
+                {key && ARABIC[key] && (
+                  <p className="text-3xl mt-2" style={{ fontFamily: "'Amiri', serif", color: colors.accentGold }}>
+                    {ARABIC[key]}
+                  </p>
+                )}
+                <p className="text-xs italic text-stone-500 mt-1">Inshallah</p>
+                <h3 className="text-3xl font-semibold mt-0.5" style={{ color: colors.primaryMaroon }}>
+                  {event.title}
+                </h3>
+                <p className="text-sm italic mt-1" style={{ color: colors.accentGold }}>
+                  {event.subtitle}
+                </p>
+                {isMain && (
+                  <span className="mx-auto mt-3 px-3 py-1 rounded-full text-[10px] font-semibold uppercase tracking-wider text-white" style={{ backgroundColor: colors.primaryMaroon }}>
+                    Main Event
                   </span>
-                </div>
+                )}
 
-                {/* Event Title & Subtitle */}
-                <div>
-                  <h3 className="text-2xl sm:text-3xl font-serif font-bold text-stone-900 mb-1">
-                    {event.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm font-serif italic text-[#B8860B] mb-4">
-                    {event.subtitle}
-                  </p>
-
-                  <p className="text-xs sm:text-sm text-stone-600 font-light leading-relaxed mb-6">
-                    {event.description}
-                  </p>
-
-                  {/* Details List */}
-                  <div className="space-y-3 pt-4 border-t border-stone-100 text-xs sm:text-sm">
-                    {/* Date */}
-                    <div className="flex items-center gap-3 text-stone-700">
-                      <div
-                        className="w-8 h-8 rounded-full flex items-center justify-center shrink-0"
-                        style={{ backgroundColor: `${colors.primaryMaroon}12`, color: colors.primaryMaroon }}
-                      >
-                        <Calendar className="w-4 h-4" />
-                      </div>
-                      <div>
-                        <span className="text-[10px] uppercase tracking-wider text-stone-400 block font-semibold">Date</span>
-                        <span className="font-medium text-stone-900">{event.date}</span>
-                      </div>
-                    </div>
-
-                    {/* Time */}
-                    <div className="flex items-center gap-3 text-stone-700">
-                      <div
-                        className="w-8 h-8 rounded-full flex items-center justify-center shrink-0"
-                        style={{ backgroundColor: `${colors.primaryMaroon}12`, color: colors.primaryMaroon }}
-                      >
-                        <Clock className="w-4 h-4" />
-                      </div>
-                      <div>
-                        <span className="text-[10px] uppercase tracking-wider text-stone-400 block font-semibold">Time</span>
-                        <span className="font-medium text-stone-900">{event.time}</span>
-                      </div>
-                    </div>
-
-                    {/* Venue */}
-                    <div className="flex items-center gap-3 text-stone-700">
-                      <div
-                        className="w-8 h-8 rounded-full flex items-center justify-center shrink-0"
-                        style={{ backgroundColor: `${colors.primaryMaroon}12`, color: colors.primaryMaroon }}
-                      >
-                        <MapPin className="w-4 h-4" />
-                      </div>
-                      <div>
-                        <span className="text-[10px] uppercase tracking-wider text-stone-400 block font-semibold">Venue</span>
-                        <span className="font-medium text-stone-900">{event.venueName}</span>
-                        <span className="text-stone-500 block text-xs">{event.venueAddress}</span>
-                      </div>
-                    </div>
-
-                    {/* Dress Code */}
-                    {event.dressCode && (
-                      <div className="flex items-center gap-3 text-stone-700">
-                        <div
-                          className="w-8 h-8 rounded-full flex items-center justify-center shrink-0"
-                          style={{ backgroundColor: `${colors.primaryMaroon}12`, color: colors.primaryMaroon }}
-                        >
-                          <Shirt className="w-4 h-4" />
-                        </div>
-                        <div>
-                          <span className="text-[10px] uppercase tracking-wider text-stone-400 block font-semibold">Attire / Dress Code</span>
-                          <span className="font-medium text-stone-800">{event.dressCode}</span>
-                        </div>
-                      </div>
-                    )}
+                <div className="mt-5 pt-5 border-t space-y-4 text-sm flex-1" style={{ borderColor: `${colors.accentGold}30` }}>
+                  <div className="flex flex-col items-center">
+                    <CalendarDays className="w-4 h-4 mb-1" style={{ color: colors.accentGold }} />
+                    <span className="font-semibold text-stone-900">{event.date.replace(/\s*\(.*\)/, '')}</span>
+                    {/\((.*)\)/.test(event.date) && <span className="text-xs italic text-stone-500">{event.date.match(/\((.*)\)/)?.[1]}</span>}
                   </div>
+                  <div className="flex flex-col items-center">
+                    <Clock className="w-4 h-4 mb-1" style={{ color: colors.accentGold }} />
+                    <span className="font-semibold text-stone-900">{event.time}</span>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <MapPin className="w-4 h-4 mb-1" style={{ color: colors.accentGold }} />
+                    <span className="font-semibold text-stone-900">{event.venueName}</span>
+                    {hasAddress && <span className="text-xs text-stone-500 max-w-[240px]">{event.venueAddress}</span>}
+                  </div>
+                  {event.dressCode && (
+                    <div className="flex flex-col items-center">
+                      <Shirt className="w-4 h-4 mb-1" style={{ color: colors.accentGold }} />
+                      <span className="font-medium text-stone-800">{event.dressCode}</span>
+                    </div>
+                  )}
                 </div>
 
-                {/* Event Actions */}
-                <div className="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between gap-2">
-                  <a
-                    href={`https://maps.google.com/?q=${encodeURIComponent(`${event.venueName} ${event.venueAddress}`)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold hover:underline"
-                    style={{ color: colors.primaryMaroon }}
-                  >
-                    <MapPin className="w-3.5 h-3.5" />
-                    <span>Venue Directions</span>
-                  </a>
-
+                <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
+                  {hasAddress && (
+                    <a
+                      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${event.venueName}, ${event.venueAddress}`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold text-white transition-transform hover:-translate-y-0.5"
+                      style={{ backgroundColor: colors.primaryMaroon }}
+                    >
+                      <Navigation className="w-3.5 h-3.5" />
+                      Directions
+                    </a>
+                  )}
                   <a
                     href={createEventCalendarUrl(weddingData, event)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-[11px] text-stone-500 hover:text-stone-800"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold border transition-transform hover:-translate-y-0.5"
+                    style={{ borderColor: colors.primaryMaroon, color: colors.primaryMaroon }}
                   >
-                    <Calendar className="w-3 h-3 text-[#D4AF37]" />
-                    <span>Add to Cal</span>
+                    <CalendarPlus className="w-3.5 h-3.5" />
+                    Add to Calendar
                   </a>
                 </div>
               </div>

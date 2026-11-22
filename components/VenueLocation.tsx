@@ -12,7 +12,7 @@ export const VenueLocation: React.FC<VenueLocationProps> = ({ weddingData, onOpe
   const { colors } = theme;
 
   return (
-    <section id="venue" className="py-20 px-4 bg-stone-50/50">
+    <section id="venue" className="py-20 px-4 page-pattern">
       <div className="max-w-5xl mx-auto">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
@@ -27,7 +27,7 @@ export const VenueLocation: React.FC<VenueLocationProps> = ({ weddingData, onOpe
             Getting to The Celebration
           </h2>
           <p className="text-sm sm:text-base text-stone-600 font-light">
-            We look forward to welcoming you to our grand celebration venue.
+            We look forward to welcoming you, Inshallah.
           </p>
         </div>
 
@@ -41,37 +41,40 @@ export const VenueLocation: React.FC<VenueLocationProps> = ({ weddingData, onOpe
             <div className="md:col-span-7 space-y-6">
               <div>
                 <span className="text-[11px] uppercase tracking-wider font-semibold text-[#B8860B]">
-                  Grand Wedding Destination
+                  Nikkah Venue
                 </span>
                 <h3 className="text-2xl sm:text-3xl font-serif font-bold text-stone-900 mt-1">
                   {venueName}
                 </h3>
                 <p className="text-sm sm:text-base text-stone-600 font-light mt-2 flex items-start gap-2">
-                  <MapPin className="w-4 h-4 text-[#781729] shrink-0 mt-1" />
+                  <MapPin className="w-4 h-4 text-[#14463A] shrink-0 mt-1" />
                   <span>{venueAddress}, {venueCity}</span>
                 </p>
               </div>
 
-              {/* Venue Amenities & Guidance */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-stone-100 text-xs text-stone-600">
-                <div className="flex items-center gap-2.5">
-                  <Car className="w-4 h-4 text-[#D4AF37] shrink-0" />
-                  <span>Complimentary Valet Parking available</span>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <Compass className="w-4 h-4 text-[#D4AF37] shrink-0" />
-                  <span>Dedicated Prayer &amp; Wudu Area</span>
-                </div>
+              {/* Other functions */}
+              <div className="grid grid-cols-1 gap-3 pt-4 border-t border-stone-100 text-xs text-stone-600">
+                {weddingData.events
+                  .filter((e) => e.venueName !== venueName)
+                  .map((e) => (
+                    <div key={e.id} className="flex items-start gap-2.5">
+                      <Compass className="w-4 h-4 text-[#C9A24A] shrink-0 mt-0.5" />
+                      <span>
+                        <strong className="text-stone-800">{e.title}:</strong> {e.venueName}
+                        {e.venueAddress ? `, ${e.venueAddress}` : ''}
+                      </span>
+                    </div>
+                  ))}
               </div>
 
               {/* Contact Inquiry numbers */}
               <div className="pt-4 border-t border-stone-100 space-y-2 text-xs text-stone-500">
                 <p className="font-semibold text-stone-700">Need help with navigation on the day?</p>
                 {contactPhones.map((phone, i) => (
-                  <div key={i} className="flex items-center gap-2">
-                    <Phone className="w-3.5 h-3.5 text-[#D4AF37]" />
+                  <a key={i} href={`tel:${phone.replace(/\s/g, '')}`} className="flex items-center gap-2 hover:underline">
+                    <Phone className="w-3.5 h-3.5 text-[#C9A24A]" />
                     <span>{phone}</span>
-                  </div>
+                  </a>
                 ))}
                 {contactEmail && (
                   <div className="flex items-center gap-2">
@@ -125,7 +128,7 @@ export const VenueLocation: React.FC<VenueLocationProps> = ({ weddingData, onOpe
                   {venueCity}
                 </h4>
                 <p className="text-xs text-stone-500 max-w-xs mt-1 font-light">
-                  Click below to view live traffic, route estimations, and real-time navigation.
+                  Open the pin in Google Maps for live directions.
                 </p>
                 <a
                   href={googleMapsUrl}

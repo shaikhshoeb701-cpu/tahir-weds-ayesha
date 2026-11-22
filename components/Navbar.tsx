@@ -21,6 +21,8 @@ export const Navbar: React.FC<NavbarProps> = ({ weddingData, onOpenCustomizer })
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => weddingAudio.subscribe(setIsPlayingMusic), []);
+
   const handleToggleMusic = () => {
     const playing = weddingAudio.toggleAmbient((state) => setIsPlayingMusic(state));
     setIsPlayingMusic(playing);
@@ -28,7 +30,7 @@ export const Navbar: React.FC<NavbarProps> = ({ weddingData, onOpenCustomizer })
 
   const navLinks = [
     { label: 'Schedule', href: '#events', icon: Calendar },
-    { label: 'Date & Reveal', href: '#reveal-date', icon: Sparkles },
+    { label: 'Nikkah Date', href: '#reveal-date', icon: Sparkles },
     { label: 'Families', href: '#families', icon: Users },
     { label: 'Venue', href: '#venue', icon: MapPin },
   ];
@@ -38,7 +40,7 @@ export const Navbar: React.FC<NavbarProps> = ({ weddingData, onOpenCustomizer })
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled
-            ? 'bg-[#FAF6EE]/95 backdrop-blur-md shadow-sm border-b border-[#D4AF37]/30 py-2.5'
+            ? 'bg-[#FBF7EE]/95 backdrop-blur-md shadow-sm border-b border-[#D4AF37]/30 py-2.5'
             : 'bg-transparent py-4'
         }`}
       >
@@ -67,7 +69,7 @@ export const Navbar: React.FC<NavbarProps> = ({ weddingData, onOpenCustomizer })
                   {weddingData.groom.callingName} &amp; {weddingData.bride.callingName}
                 </span>
                 <span className="text-[10px] tracking-wider text-amber-800/80 block uppercase">
-                  Wedding Matrimony
+                  Nikkah · January 2027
                 </span>
               </div>
             </a>
@@ -78,7 +80,7 @@ export const Navbar: React.FC<NavbarProps> = ({ weddingData, onOpenCustomizer })
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-xs uppercase tracking-widest font-medium transition-colors hover:text-[#781729] relative py-1 group"
+                  className="text-xs uppercase tracking-widest font-medium transition-colors hover:text-[#14463A] relative py-1 group"
                   style={{ color: '#4A332D' }}
                 >
                   {link.label}
@@ -124,7 +126,7 @@ export const Navbar: React.FC<NavbarProps> = ({ weddingData, onOpenCustomizer })
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-label="Toggle Navigation Menu"
-                className="lg:hidden p-2 rounded-lg border border-[#D4AF37]/30 text-[#781729] hover:bg-[#FAF6EE] transition-colors"
+                className="lg:hidden p-2 rounded-lg border border-[#D4AF37]/30 text-[#14463A] hover:bg-[#FAF6EE] transition-colors"
               >
                 {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>

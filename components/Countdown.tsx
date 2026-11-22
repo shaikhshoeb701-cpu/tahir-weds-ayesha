@@ -53,21 +53,21 @@ export const Countdown: React.FC<CountdownProps> = ({ weddingData }) => {
   return (
     <section className="py-12 px-4 max-w-4xl mx-auto">
       <div
-        className="rounded-3xl p-6 sm:p-10 border shadow-sm text-center relative overflow-hidden"
+        className="rounded-3xl p-6 sm:p-10 border shadow-sm text-center relative overflow-hidden islamic-pattern-light"
         style={{
-          backgroundColor: `${colors.softCream}90`,
+          backgroundColor: colors.softCream,
           borderColor: `${colors.accentGold}50`,
         }}
       >
         <div className="flex items-center justify-center gap-2 mb-2 text-stone-500">
-          <Clock className="w-4 h-4 text-[#D4AF37]" />
+          <Clock className="w-4 h-4" style={{ color: colors.accentGold }} />
           <span className="text-xs uppercase tracking-widest font-semibold" style={{ color: colors.primaryMaroon }}>
-            {time.isPast ? 'Celebrating Matrimony' : 'Counting Down To Forever'}
+            {time.isPast ? 'Alhamdulillah' : 'Inshallah, counting down to the Nikkah'}
           </span>
         </div>
 
-        <h3 className="text-2xl sm:text-3xl font-serif font-medium text-stone-900 mb-6">
-          {time.isPast ? 'The Blessed Day Has Arrived!' : 'Every Second Brings Us Closer'}
+        <h3 className="text-4xl sm:text-5xl mb-6" style={{ fontFamily: "'Great Vibes', cursive", color: colors.primaryMaroon }}>
+          {time.isPast ? 'Qubool Hai, Qubool Hai, Qubool Hai' : 'Until we say “Qubool Hai”'}
         </h3>
 
         {/* Counter Grid */}
