@@ -548,9 +548,9 @@ main{max-width:480px;margin:0 auto;box-shadow:0 0 60px rgba(62,15,28,.18);overfl
       isOn:function(){ return playing; }
     };
   }
-  /* Song file: put the mp3 in the repo at public/Audio/Mp3Jan.mp3 (same file name as Hafeez's site).
+  /* Song file: the mp3 lives in the repo at public/Audio/Amr_diab-_Qusad_einy_English_translated_.mp3.
      If the file is not there, the built-in oud & daf melody plays instead. */
-  var SONG = 'Audio/Mp3Jan.mp3';
+  var SONG = 'Audio/Amr_diab-_Qusad_einy_English_translated_.mp3';
   var song = document.createElement('audio'); song.loop = true; song.preload = 'auto';
   var songOk = true; song.addEventListener('error', function(){ songOk = false; if(wantOn) fallback(); });
   song.src = SONG;
